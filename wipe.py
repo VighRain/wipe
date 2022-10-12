@@ -1,5 +1,6 @@
 import random
 import os
+import shutil
 
 
 def corruptFile(pathtowipe):
@@ -14,6 +15,7 @@ def corruptFile(pathtowipe):
         f.close()
     return contents
 
+
 def wipeFile(pathtowipe):
     if os.path.exists(pathtowipe):
         os.remove(pathtowipe)
@@ -22,9 +24,19 @@ def wipeFile(pathtowipe):
         return False
 
 
+def wipeDir(pathtowipe):
+    if os.path.exists(pathtowipe):
+        shutil.rmtree(pathtowipe)
+        return True
+    else:
+        return False
+
+
 if __name__ == "__main__":
-    print("File path:")
+    print("File/directory path:")
     pathtowipe = input()
     if os.path.isfile(pathtowipe):
         corruptFile(pathtowipe)
         wipeFile(pathtowipe)
+    elif os.path.isdir(pathtowipe):
+        wipeDir(pathtowipe)
