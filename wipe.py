@@ -1,4 +1,5 @@
 import random
+import os
 
 
 def corruptFile(pathtowipe):
@@ -13,8 +14,17 @@ def corruptFile(pathtowipe):
         f.close()
     return contents
 
+def wipeFile(pathtowipe):
+    if os.path.exists(pathtowipe):
+        os.remove(pathtowipe)
+        return True
+    else:
+        return False
+
 
 if __name__ == "__main__":
     print("File path:")
     pathtowipe = input()
-    corruptFile(pathtowipe)
+    if os.path.isfile(pathtowipe):
+        corruptFile(pathtowipe)
+        wipeFile(pathtowipe)
