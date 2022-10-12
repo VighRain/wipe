@@ -26,6 +26,8 @@ def wipeFile(pathtowipe):
 
 def wipeDir(pathtowipe):
     if os.path.exists(pathtowipe):
+        for filename in os.listdir(pathtowipe):
+            corruptFile(os.path.join(pathtowipe, filename))
         shutil.rmtree(pathtowipe)
         return True
     else:
