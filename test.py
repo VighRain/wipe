@@ -17,6 +17,12 @@ class testWipe(unittest.TestCase):
         isWiped = wipe.wipeFile(pathtowipe)
         self.assertEqual(isWiped, True)
 
+    def test3DoesDirectoryExistAfterWiping(self):
+        print("Directory wipe test")
+        pathtowipe = input()
+        isWiped = wipe.wipeDir(pathtowipe)
+        self.assertEqual(isWiped, True)
+
 
 if __name__ == "__main__":
     unittest.main()
