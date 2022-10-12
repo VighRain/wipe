@@ -11,6 +11,12 @@ class testWipe(unittest.TestCase):
         corrupted_contents = wipe.corruptFile(pathtowipe)
         self.assertNotEqual(contents, corrupted_contents)
 
+    def test2DoesFileExistAfterWiping(self):
+        print("File wipe test")
+        pathtowipe = input()
+        isWiped = wipe.wipeFile(pathtowipe)
+        self.assertEqual(isWiped, True)
+
 
 if __name__ == "__main__":
     unittest.main()
